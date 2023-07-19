@@ -1,18 +1,67 @@
-\documentclass[12pt]{book}
+\documentclass[fontsize=12pt, oneside, chapterprefix=false]{scrreprt}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{scrhack}
+\usepackage{csquotes}
+\usepackage{mdframed}
 \usepackage{fontspec}
-\usepackage{relsize}
+\usepackage[backend=biber, style=apa]{biblatex}
 \usepackage{tikz}
-\usepackage{fancyhdr}
 \usepackage{emptypage}
 \usepackage{float}
-\usepackage{multirow}
-\usepackage{tabularx}
 \usepackage{tocloft}
-\usepackage{bigstrut}
-\usepackage{fancyhdr}
-\usepackage[linktoc=none]{hyperref}
+\usepackage[
+  markcase=upper,
+  automark
+]{scrlayer-scrpage}
+\rofoot*{}
+\cofoot*{\makebox[1ex][l]{\pagemark}}
 
-\renewcommand{\headrulewidth}{0pt}
+\setlength{\footheight}{21.74998pt}
+\setlength\parindent{32pt}
+\setmainfont{Times New Roman}
+%\titleformat{\chapter}[hang]{\bfseries\fontsize{14}{12}\selectfont\chaptertitlename}{\bfseries\fontsize{14}{12}\thechapter}{0.5cm}{}[]
+\renewcommand*{\chapterformat}{%
+  \mbox{\chapapp~\thechapter:\enskip}%
+}
+
+\addbibresource{references.bib}
+
+\renewcommand*{\sectionformat}{%
+  \mbox{\thesection\enskip}%
+}
+
+
+\renewcommand*{\tableformat}{%
+  \mbox{Table \thetable\enskip}%
+}
+
+\renewcommand*{\figureformat}{%
+  \mbox{Figure \thefigure\enskip}%
+}
+
+\renewcommand*{\subsectionformat}{%
+  \mbox{\thesubsection\enskip}%
+}
+
+\renewcommand*{\subsubsectionformat}{%
+  \mbox{\thesubsubsection\enskip}%
+}
+
+\setkomafont{disposition}{\normalfont\bfseries\selectfont}
+\setkomafont{chapter}{\normalfont\bfseries\fontsize{14}{13.5}\selectfont}
+\addtokomafont{chapterentry}{\usekomafont{chapter}\selectfont}
+
+\setkomafont{section}{\normalfont\bfseries\selectfont}
+\setkomafont{subsection}{\normalfont\selectfont}
+\setkomafont{subsubsection}{\normalfont\itshape\selectfont}
+
+\tikzstyle{block} = [rectangle, minimum width=1.5cm, minimum height=1cm, text centered, text width = 1.5cm, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage[english]{babel}
+
+\usepackage[a4paper,head=21.74998pt,top=3cm,bottom=3cm,left=4cm,right=2cm,marginparwidth=1.75cm]{geometry}
 
 \newcommand{\listappendicesname}{\begin{center} \large List of Appendices \end{center}}
 \newlistof{appendices}{apc}{\listappendicesname}
@@ -23,169 +72,222 @@
   % Add more content here, if needed.
 }
 
-\title{}
-\author{[Your full name] \\ {[Thesis advisor's name]}}
-
-\setmainfont{Times New Roman}
-
 \linespread{1.5}
 
-% Language setting
-% Replace `english' with e.g. `spanish' to change the document language
-\usepackage[english]{babel}
-
-% Set page size and margins
-% Replace `letterpaper' with `a4paper' for UK/EU standard size
-\usepackage[letterpaper,top=3cm,bottom=3cm,left=3cm,right=2cm,marginparwidth=1.75cm]{geometry}
-
-% Useful packages
-\usepackage{amsmath}
-\usepackage{graphicx}
+\setmonofont{Source Code Pro}[
+  BoldFont={* Medium},
+  BoldItalicFont={* Medium Italic},
+  Scale=MatchLowercase,
+]
 
 \begin{document}
-    \topskip0pt
-    \begin{center}
-    \textbf{\fontsize{16}{13.5}\selectfont [TITLE OF THE THESIS WHICH MAY BE DIVIDED ONTO MULTIPLE LINES IF THE TITLE IS TOO LONG, 
-\\ BUT THE TOP LINE SHOULD BE LONGER]}
-    \bigskip
+\topskip0pt
+\begin{center}
+	\textbf{\fontsize{16}{13.5}\selectfont [TITLE OF THE THESIS WHICH MAY BE DIVIDED ONTO MULTIPLE LINES IF THE TITLE IS TOO LONG,
+			\\ BUT THE TOP LINE SHOULD BE LONGER]}
+	\bigskip
 
-    \fontsize{11}{13.5}\selectfont By
+	\fontsize{11}{13.5}\selectfont By
 
-    \fontsize{11}{13.5}\selectfont [Your full name] \\ {[Thesis advisor's name]}
+	\fontsize{11}{13.5}\selectfont [Your full name] \\ {[Thesis advisor's name]}
 
-    \vspace{0.9cm}
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1.65in, height=0.73in]{CIT logo.png}
-    \end{figure}
+	\vspace{0.9cm}
 
-    \vspace{0.5cm}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.65in, height=0.73in]{CIT logo.png}
+	\end{figure}
 
-    \fontsize{11}{13.5}\selectfont A THESIS
+	\vspace{0.5cm}
 
-    \fontsize{11}{13.5}\selectfont Submitted to
+	\fontsize{11}{13.5}\selectfont A THESIS
 
-    \textbf{\fontsize{14}{13.5}\selectfont  KOLEGJI UNIVERSITAR “Instituti Kanadez i Teknologjisë” }
-    
-    \textbf{\fontsize{14}{13.5}\selectfont  University College “CANADIAN INSTITUTE OF TECHNOLOGY” }
+	\fontsize{11}{13.5}\selectfont Submitted to
 
-    \textbf{\fontsize{14}{13.5}\selectfont  Faculty of [write your Faculty (Economy/Engineering)] }
-    
-    \textbf{\fontsize{14}{13.5}\selectfont  Department [write your Department under the Faculty] }
-    
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
+	\textbf{\fontsize{14}{13.5}\selectfont  KOLEGJI UNIVERSITAR “Instituti Kanadez i Teknologjisë” }
 
-    \fontsize{11}{13.5}\selectfont In partial fullfillment of the requirements for the degree of:
-    
-    \textbf{\fontsize{14}{13.5}\selectfont Bachelor/Master of Science in [your primary major]}
+	\textbf{\fontsize{14}{13.5}\selectfont  University College “CANADIAN INSTITUTE OF TECHNOLOGY” }
 
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
-    \bigskip
+	\textbf{\fontsize{14}{13.5}\selectfont  Faculty of [write your Faculty (Economy/Engineering)] }
+
+	\textbf{\fontsize{14}{13.5}\selectfont  Department [write your Department under the Faculty] }
+
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+
+	\fontsize{11}{13.5}\selectfont In partial fullfillment of the requirements for the degree of:
+
+    \textbf{\fontsize{14}{13.5}\selectfont (Bachelor/Master of Science) in [your primary major]}
+
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
 
 
-    \fontsize{11}{13.5}\selectfont Submitted on [month day, year] 
-    \end{center}
-    \pagestyle{empty}
+	\fontsize{11}{13.5}\selectfont Submitted on [month day, year]
+\end{center}
+\pagestyle{empty}
 \newpage
 \fakesection{Copyright Page}
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot[le, ro]{}
 
-\noindent \fontsize{11}{13.5}\selectfont Bachelor/Master of Science in [Primary Major, then Profile (if it has a profile, like in MBA)] 
+\noindent \fontsize{11}{13.5}\selectfont (Bachelor/Master of Science) in Software Engineering
 
-\noindent Submitted on [Month day, year].  
+\noindent Submitted on [dd/mm/yyyy].
 
 \bigskip
 
- \noindent  Approved:
+\noindent  Approved:
 
- \noindent \underline{\hspace{3.2in}} [Thesis advisor's name] \hspace*{\fill} (signature) 
- 
+\noindent \underline{\hspace{3.2in}} Supervisor Name \hspace*{\fill} (signature)
+
 \bigskip
 \bigskip
 \bigskip
 \bigskip
- 
- \noindent  \underline{\hspace{3.2in}} [Chair or Head of Department] \hspace*{\fill} (signature) 
 
- \vspace*{\fill}
+\noindent  \underline{\hspace{3.2in}} [Head of department name] \hspace*{\fill} (signature)
 
- \noindent I understand that my thesis will become part of the collection of Canadian Institute of Technology. My signature below authorizes release of my thesis to any reader upon request. I also affirm that the work represented in this thesis is my own work. 
- \pagenumbering{roman}
- \bigskip
- \bigskip
- 
- \noindent  \underline{\hspace{3.2in}} [Your full name], Author \hspace*{\fill} (signature) 
+\vspace*{\fill}
+
+\noindent I understand that my thesis will become part of the collection of Canadian Institute of Technology. My signature below authorizes release of my thesis to any reader upon request. I also affirm that the work represented in this thesis is my own work.
+\pagenumbering{roman}
+\bigskip
+\bigskip
+
+\noindent  \underline{\hspace{3.2in}} [your name], Author \hspace*{\fill} (signature)
+\thispagestyle{plain}
 \setcounter{page}{2}
 \newpage
 
-\noindent \begin{tabular}{|p{6.4in}|}\hline
-\textbf{\fontsize{11}{13.5}\selectfont Title of thesis:} \\
-\bigskip \\  
-\bigskip \\ \hline
-\textbf{\fontsize{11}{13.5}\selectfont Abstract:} \\
-\fontsize{11}{13.5}\selectfont A.  Abstract (200-300 words). This is a synopsis of your work, a condensed version of the entire thesis. It should provide enough information for a lay reader to understand the rationale and significance of the work. It includes: \\ •  background (1-2 sentences) \\ •  rationale for the study  \\ •  methods \\ •  results \\ •  analysis and conclusions
+\thispagestyle{plain}
+\noindent \begin{tabular}{|p{6.0in}|}\hline
+	\textbf{\fontsize{11}{13.5}\selectfont Title of thesis:}                            \\
+	Title \\
+	\hline
+	\textbf{\fontsize{11}{13.5}\selectfont Abstract:}                                   \\
+	\fontsize{11}{13.5}\selectfont
 
-\vspace*{\fill}\\\hline
-\textbf{\fontsize{11}{13.5}\selectfont Keywords:} \\
-\fontsize{11}{13.5}\selectfont 7-10 keywords\\\hline
+	Abstract
+
+	\vspace*{\fill}                                                                     \\\hline
+	\textbf{\fontsize{11}{13.5}\selectfont Keywords:}                                   \\
+	\fontsize{11}{13.5}\selectfont keywords                                             \\\hline
 \end{tabular}
 
 \newpage
 
-\begin{center}
-    \addcontentsline{toc}{section}{Acknowledgment}
-    \section*{Acknowledgment}
-\end{center}
+\thispagestyle{plain}
+\addcontentsline{toc}{section}{Acknowledgment}
+\noindent \textbf{\fontsize{14}{12}\selectfont Acknowledgment}
+
+\bigskip
+
+Acknowledgment
 
 \newpage
 
+\thispagestyle{plain}
 \fakesection{Table of contents}
+
+\renewcommand{\cftchappresnum}{\normalfont Chapter }
+\addtolength\cftchapnumwidth{1.7cm}
+\renewcommand{\cftchapaftersnum}{:}
+
+\renewcommand{\cftchapindent}{0.65cm}
+
 \renewcommand*\contentsname{\begin{center}
-   \fontsize{14}{11} Table of contents
-\end{center}}
+		\fontsize{14}{11} Table of contents
+	\end{center}}
 
 \tableofcontents
 
+
+\thispagestyle{plain}
 \newpage
-\fakesection{List of Figures and Tables}
-\begin{center}
-    \textbf {\large List of Figures and Tables}
-\end{center}
 
 \renewcommand\listfigurename{\begin{center}\large List of Figures\end{center}}
-\renewcommand\listtablename{\begin{center}\large List of Tables\end{center}}
-\listoffigures
-\listoftables
 
+\renewcommand\listtablename{\begin{center}\large List of Tables\end{center}}
+
+\fakesection{List of Figures}
+\listoffigures
+\pagestyle{\indexpagestyle}
+\newpage
+
+\fakesection{List of Tables}
+\noindent\listoftables
+\pagestyle{\indexpagestyle}
 \newpage
 
 \fakesection{List of Appendices}
-\listofappendices
+\noindent\listofappendices
 \newpage
 \pagenumbering{arabic}
 
+\rofoot*{\makebox[1ex][l]{\pagemark}}
+\cofoot*{}
+
+\chapter{Introduction}
 
 
-\appendices{appendix one} appendix  appendix appendix appendix appendix appendix
 
-\appendices{appendix two} appendix  appendix appendix appendix appendix appendix
+\begin{center}
+	\begin{minipage}{0.8\linewidth}
+		\centering
+		\begin{tikzpicture}[node distance=2cm, auto]
+			% Nodes
+			\node (a) [text width = 3cm ] {A};
+			\node (b) [below of=a, text width = 3cm, yshift = -2cm] {B};
+            \node (c) [below of=b, text width = 3.5cm, yshift = -2cm] {C};
 
-\appendices{appendix three} appendix  appendix appendix appendix appendix appendix
+			% Arrows
+			\draw [arrow] (a) -- (b);
+			\draw [arrow] (b) -- (c);
 
-\appendices{appendix four} appendix  appendix appendix appendix appendix appendix
+		\end{tikzpicture}
+		\captionbelowof{figure}{Example figure}
+	\end{minipage}
+\end{center}
+
+\bigskip
+
+\begin{minipage}{0.8\linewidth}
+    \captionaboveof{table}{Example table, \nptextcite{treebuilder}}
+	\centering\begin{tabular}{|l|l|l|}
+		\hline
+		a & b  & c \\ \hline \hline
+		1 & 38.642510412s & 38.1857299s  \\ \hline
+		2          & 35.74276708s  & 41.552642889s \\ \hline
+		3          & 34.393332922s & 39.294969388s \\ \hline
+		4          & 37.139100995s & 39.877499854s \\ \hline
+		5          & 35.347136118s & 42.200026696s \\ \hline
+	\end{tabular}
+\end{minipage}
+
+\newpage
+
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography[heading=subbibliography]{} %Prints bibliography
+
+\newpage
+
+\noindent\appendices{Appendix A: Appendix}{
+	\noindent\normalfont\bfseries\fontsize{12}{13.5}\selectfont{Appendix A: Appendix}
+
+	\bigskip
+
+	\noindent Appendix
+}
+\newpage
+\pagenumbering{arabic}
 
 \end{document}
